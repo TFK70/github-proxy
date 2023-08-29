@@ -32,22 +32,3 @@ func LoadConfig() *AppConfig {
 
 	return &Config
 }
-
-func ValidateConfig() {
-	// utils.EnsureKeys(Config, []string{"token", "sources", "owner", "repo"})
-
-	// sources := utils.EnsureMap(Config["sources"])
-
-	// for _, val := range Config.Sources {
-	//   endpoint := utils.EnsureMap(val)
-	//   utils.EnsureKeys(endpoint, []string{"path"})
-	// }
-}
-
-// func GetString(key string) string {
-//   return Config[key].(string)
-// }
-
-// func GetSources() Sources {
-//   return Config["sources"].(Sources)
-// }
