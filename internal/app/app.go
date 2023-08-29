@@ -52,7 +52,6 @@ func CreateServer() {
 
 func Bootstrap() {
 	config.LoadConfig()
-	config.ValidateConfig()
 
 	Reconcile()
 
