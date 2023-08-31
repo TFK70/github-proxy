@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-func Reconcile() {
+func Reconcile() error {
 	owner := config.Config.Owner
 	repo := config.Config.Repo
 	sources := config.Config.Sources
@@ -21,11 +21,18 @@ func Reconcile() {
 
 	for service, source := range sources {
 		fmt.Println(fmt.Sprintf("Reconciled envs for service %s", service))
-		content := getFileContent(source.Path)
+		content, err := getFileContent(source.Path)
+
+    if err != nil {
+      fmt.Println("Reconcilation failed")
+      return err
+    }
+
 		cache.CacheEnv(service, content)
 	}
 
 	fmt.Println("Reconcilation finished")
+  return nil
 }
 
 func GetEnvHandler(w http.ResponseWriter, r *http.Request) {
